@@ -1,31 +1,48 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Sidebar />
+    <main class="main">
+      <Searchbar />
+      <div class="content">
+        <router-view />
+      </div>
+    </main>
   </div>
 </template>
 
+<script>
+import Searchbar from '@/components/Searchbar.vue';
+import Sidebar from '@/components/Sidebar.vue';
+
+export default {
+  components: {
+    Sidebar,
+    Searchbar,
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  margin: 0;
+  padding: 0;
 }
+#app {
+  position: fixed;
+  display: flex;
+  overflow-y: auto;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
 
-#nav {
-  padding: 30px;
+  & .main {
+    background: #fff;
+    height: 30rem;
+    width: 100%;
+    height: 100vh;
+    padding-left: 16rem;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+    & .content {
+      padding: 1.5rem 1rem;
     }
   }
 }

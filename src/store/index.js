@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex, { createLogger } from 'vuex';
 
-Vue.use(Vuex)
+// Modules
+import users from './modules/users';
+
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+  plugins: process.env.NODE_ENV === 'development' ? [createLogger()] : [],
+  strict: true,
   modules: {
-  }
-})
+    users,
+  },
+});
